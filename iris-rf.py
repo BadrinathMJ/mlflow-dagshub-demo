@@ -71,7 +71,7 @@ with mlflow.start_run():
 
     mlflow.log_artifact("confusion_matrix.png")
     mlflow.log_artifact(__file__)
-    # mlflow.sklearn.log_model(dt, "decision Tree")
+    # mlflow.sklearn.log_model(rf, "random forest")
     mlflow.set_tag('author', 'Mayur')
-    mlflow.set_tag('model', 'decision tree')
+    mlflow.set_tag('model', 'random forest')
     print("accuracy",accuracy)
