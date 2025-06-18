@@ -5,7 +5,8 @@ import mlflow.sklearn
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split 
 
-
+import dagshub
+dagshub.init(repo_owner='mjcode14', repo_name='mlflow-dagshub-demo', mlflow=True)
 import pandas as pd
 
 import mlflow.sklearn
@@ -19,7 +20,7 @@ import matplotlib.pyplot as plt
 
 import seaborn as sns
 
-mlflow.set_tracking_uri('http://127.0.0.1:5000')
+mlflow.set_tracking_uri('https://dagshub.com/mjcode14/mlflow-dagshub-demo.mlflow')
 
 # Load the Iris dataset
 
@@ -44,7 +45,7 @@ mlflow.set_experiment("iris_dt")
 #apply miflow to train
 
 # with mlflow.start_run(run_name="pk_exp_with_confusion_matrix_log_artifact"):
-with mlflow.start_run(experiment_id="651888716627803899"):
+with mlflow.start_run():
     dt = DecisionTreeClassifier(max_depth=max_depth)
     dt.fit(X_train, y_train)
     y_pred = dt.predict(X_test)
