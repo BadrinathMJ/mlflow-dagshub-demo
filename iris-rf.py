@@ -38,7 +38,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 
 max_depth = 8
 
-# n_estimators = 10
+n_estimators = 10
 
 mlflow.set_experiment("iris_dt")
 
@@ -46,9 +46,9 @@ mlflow.set_experiment("iris_dt")
 
 # with mlflow.start_run(run_name="pk_exp_with_confusion_matrix_log_artifact"):
 with mlflow.start_run():
-    dt = DecisionTreeClassifier(max_depth=max_depth)
-    dt.fit(X_train, y_train)
-    y_pred = dt.predict(X_test)
+    rf = RandomForestClassifier(max_depth=max_depth, n_estimators=n_estimators)
+    rf.fit(X_train, y_train)
+    y_pred = rf.predict(X_test)
 
     accuracy = accuracy_score(y_test, y_pred)
     # precision = precision_score(y_test, y_pred)
